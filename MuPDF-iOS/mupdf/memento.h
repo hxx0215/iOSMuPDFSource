@@ -167,7 +167,6 @@
 #define MEMENTO_FREEFILL  0xa9
 
 #define MEMENTO_FREELIST_MAX 0x2000000
-#define MEMENTO
 int Memento_checkBlock(void *);
 int Memento_checkAllMemory(void);
 int Memento_check(void);
