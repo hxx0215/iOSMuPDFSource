@@ -476,7 +476,7 @@ pdf_load_version(fz_context *ctx, pdf_document *doc)
 
 static void
 pdf_read_start_xref(fz_context *ctx, pdf_document *doc)
-{
+{ //反向查找startxref获得xref的位置
 	unsigned char buf[1024];
 	int t, n;
 	int i;
