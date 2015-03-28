@@ -365,7 +365,7 @@ end:
 
 pdf_obj *
 pdf_parse_dict(fz_context *ctx, pdf_document *doc, fz_stream *file, pdf_lexbuf *buf)
-{
+{//分析字典
 	pdf_obj *dict;
 	pdf_obj *key = NULL;
 	pdf_obj *val = NULL;

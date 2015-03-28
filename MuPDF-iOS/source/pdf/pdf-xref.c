@@ -1052,7 +1052,7 @@ pdf_load_xref(fz_context *ctx, pdf_document *doc, pdf_lexbuf *buf)
 	int xref_len;
 	pdf_xref_entry *entry;
 
-	pdf_read_start_xref(ctx, doc);
+	pdf_read_start_xref(ctx, doc);//starxref后面的值存入doc->startxref
 
 	pdf_read_xref_sections(ctx, doc, doc->startxref, buf, 1);
 
@@ -1323,7 +1323,7 @@ pdf_init_document(fz_context *ctx, pdf_document *doc)
 
 	fz_try(ctx)
 	{
-		pdf_load_version(ctx, doc);
+		pdf_load_version(ctx, doc);//读入pdf版本号放入doc->version中
 
 		doc->file_length = fz_stream_meta(ctx, doc->file, FZ_STREAM_META_LENGTH, 0, NULL);
 		if (doc->file_length < 0)
@@ -2285,7 +2285,8 @@ pdf_open_document_no_run(fz_context *ctx, const char *filename)
 	{
 		file = fz_open_file(ctx, filename);
 		doc = pdf_new_document(ctx, file);
-		pdf_init_document(ctx, doc);
+		pdf_init_document(ctx, doc);//交叉引用表、版本信息、PDF版本信息、root对象、ocg什么的
+        
 	}
 	fz_always(ctx)
 	{
